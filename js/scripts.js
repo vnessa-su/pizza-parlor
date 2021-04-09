@@ -52,6 +52,12 @@ Order.prototype.removePizza = function(pizzaId){
   return true;
 }
 
+Order.prototype.resetOrder = function(){
+  this.pizzas = {},
+  this.totalPrice = 0;
+  this.currentId = 0;
+}
+
 // TEST !!!TO BE REMOVED!!!
 const customerOrder = new Order();
 customerOrder;

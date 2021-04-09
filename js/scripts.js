@@ -7,6 +7,7 @@ function Pizza(toppingsSelected, sizeSelected){
 
 Pizza.prototype.calculatePrice = function(){
   const size = this.size;
+  const numberOfToppings = this.toppings.length;
   let price;
   switch (size){
     case ("small"):
@@ -21,8 +22,16 @@ Pizza.prototype.calculatePrice = function(){
     default:
       throw "Invalid pizza size";
   }
+  price += (0.25 * numberOfToppings);
   this.price = price;
 }
+
+// TEST !!!!!TO BE REMOVED!!!!!
+let toppings = ["cheese", "pepperoni", "green peppers"];
+let size = "medium";
+const customerPizza = new Pizza(toppings, size);
+customerPizza.calculatePrice();
+customerPizza;
 
 // ---------- User Interface Logic ----------
 function getPizzaToppingsSelected(){

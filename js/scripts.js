@@ -76,7 +76,9 @@ function getPizzaToppingsSelected(){
     } else {
       throw "Invalid topping selection";
     }
+    $(this).prop('checked', false);
   });
+
   return {noCost: noCostSelections, basicToppings: basicSelections, premiumToppings: premiumSelections};
 }
 
@@ -87,7 +89,7 @@ function displayPizzaPrice(pizza){
   pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.basicToppings));
   pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.premiumToppings));
   const numberOfToppings = pizzaToppings.length;
-  
+
   let htmlString = `<p class="pizza-size">${pizzaSize} Pizza</p><p class="pizza-toppings">`;
   pizzaToppings.forEach(function(element, index){
     htmlString += element;

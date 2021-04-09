@@ -110,10 +110,17 @@ $(document).ready(function(){
     event.preventDefault();
     const pizzaSize = $("#pizzaSize").val();
     $("#pizzaSize").val("").change();
-    const pizzaToppings = getPizzaToppingsSelected();
-    const inputPizza = new Pizza(pizzaToppings, pizzaSize);
-    inputPizza.calculatePrice();
-    displayPizzaPrice(inputPizza);
-    console.log(inputPizza);
+    console.log(pizzaSize)
+    
+    if(pizzaSize){
+      const pizzaToppings = getPizzaToppingsSelected();
+      const inputPizza = new Pizza(pizzaToppings, pizzaSize);
+      inputPizza.calculatePrice();
+      displayPizzaPrice(inputPizza);
+      console.log(inputPizza);
+    } else {
+      alert("Select size of pizza");
+    }
+    
   });
 });

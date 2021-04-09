@@ -35,6 +35,18 @@ customerPizza;
 // displayPizzaPrice(customerPizza);
 
 // ---------- User Interface Logic ----------
+function populateToppings(){
+  const toppings = ["Extra Cheese", "Pepperoni", "Green Peppers", "Mushroooms"];
+  toppings.forEach(function(element){
+    const htmlString = 
+      `<div class="form-check form-check-inline">\
+        <input type="checkbox" id="${element.toLowerCase()}-topping" class="form-check-input" value="${element}">\
+        <label for="${element.toLowerCase()}-topping" class="form-check-label">${element}</label>\
+      </div>`;
+    $("#toppingsCheckbox").append(htmlString);
+  });
+}
+
 function getPizzaToppingsSelected(){
   let toppingsSelected = [];
   $("#toppingsCheckbox :checked").each(function(){
@@ -66,6 +78,7 @@ function displayPizzaPrice(pizza){
 }
 
 $(document).ready(function(){
+  populateToppings();
   $("#pizzaForm").submit(function(event){
     event.preventDefault();
     const pizzaSize = $("#pizzaSize").val();

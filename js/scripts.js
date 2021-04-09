@@ -7,7 +7,8 @@ function Pizza(toppingsSelected, sizeSelected){
 
 Pizza.prototype.calculatePrice = function(){
   const size = this.size;
-  const numberOfToppings = this.toppings.length;
+  const numberOfBasicToppings = this.toppings.basicToppings.length;
+  const numberOfPremiumToppings = this.toppings.premiumToppings.length;
   let price;
   switch (size){
     case ("Small"):
@@ -22,48 +23,71 @@ Pizza.prototype.calculatePrice = function(){
     default:
       throw "Invalid pizza size";
   }
-  price += (0.25 * numberOfToppings);
+  price += (0.25 * numberOfBasicToppings);
+  price += (1.00 * numberOfPremiumToppings);
   this.price = price;
 }
 
-// TEST !!!!!TO BE REMOVED!!!!!
-let toppings = ["cheese", "pepperoni", "green peppers"];
-let size = "Medium";
-const customerPizza = new Pizza(toppings, size);
-customerPizza.calculatePrice();
-customerPizza;
-// displayPizzaPrice(customerPizza);
-
 // ---------- User Interface Logic ----------
 function populateToppings(){
-  const toppings = ["Extra Cheese", "Pepperoni", "Green Peppers", "Mushroooms"];
-  toppings.forEach(function(element){
+  const noCostSelection = ["No Cheese", "No Sauce", "Extra Sauce"];
+  const basicToppings = ["Extra Cheese", "Pepperoni", "Green Peppers", "Mushroooms"];
+  const premiumToppings = ["Grilled Chicken", "Artichokes", "Anchovies", "Pineapple"];
+  noCostSelection.forEach(function(element){
     const htmlString = 
       `<div class="form-check form-check-inline">\
-        <input type="checkbox" id="${element.toLowerCase()}-topping" class="form-check-input" value="${element}">\
-        <label for="${element.toLowerCase()}-topping" class="form-check-label">${element}</label>\
+        <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-input no-cost-topping" value="${element}">\
+        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label no-cost-topping">${element}</label>\
+      </div>`;
+    $("#toppingsCheckbox").append(htmlString);
+  });
+  $("#toppingsCheckbox").append("<h6>(+$0.25):</h6>");
+  basicToppings.forEach(function(element){
+    const htmlString = 
+      `<div class="form-check form-check-inline">\
+        <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-input basic-topping" value="${element}">\
+        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label basic-topping">${element}</label>\
+      </div>`;
+    $("#toppingsCheckbox").append(htmlString);
+  });
+  $("#toppingsCheckbox").append("<h6>(+$1.00):</h6>");
+  premiumToppings.forEach(function(element){
+    const htmlString = 
+      `<div class="form-check form-check-inline">\
+        <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-input premium-topping" value="${element}">\
+        <label for="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-label premium-topping">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });
 }
 
 function getPizzaToppingsSelected(){
-  let toppingsSelected = [];
+  let noCostSelections = [];
+  let basicSelections = [];
+  let premiumSelections = [];
   $("#toppingsCheckbox :checked").each(function(){
-    toppingsSelected.push($(this).val());
+    let topping = $(this).val();
+    if($(this).hasClass("no-cost-topping")){
+      noCostSelections.push(topping);
+    } else if($(this).hasClass("basic-topping")){
+      basicSelections.push(topping);
+    } else if($(this).hasClass("premium-topping")){
+      premiumSelections.push(topping);
+    } else {
+      throw "Invalid topping selection";
+    }
   });
-  return toppingsSelected;
+  return {noCost: noCostSelections, basicToppings: basicSelections, premiumToppings: premiumSelections};
 }
 
 function displayPizzaPrice(pizza){
   const pizzaSize = pizza.size;
-  const pizzaToppings = pizza.toppings;
-  const numberOfToppings = pizzaToppings.length;
   const pizzaPrice = pizza.price;
-  console.log(pizzaSize);
-  console.log(pizzaToppings);
-  console.log(pizzaPrice);
-  console.log(pizzaToppings.length)
+  let pizzaToppings = Object.values(pizza.toppings.noCost);
+  pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.basicToppings));
+  pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.premiumToppings));
+  const numberOfToppings = pizzaToppings.length;
+  
   let htmlString = `<p class="pizza-size">${pizzaSize} Pizza</p><p class="pizza-toppings">`;
   pizzaToppings.forEach(function(element, index){
     htmlString += element;
@@ -73,7 +97,8 @@ function displayPizzaPrice(pizza){
       htmlString += ", ";
     }
   });
-  htmlString += `<p class="pizza-price">$${pizzaPrice.toFixed(2)}</p>`;
+  htmlString += `<p class="pizza-price float-right">$${pizzaPrice.toFixed(2)}</p>`;
+
   $("#priceDisplay").html(htmlString);
 }
 
@@ -86,8 +111,6 @@ $(document).ready(function(){
     const inputPizza = new Pizza(pizzaToppings, pizzaSize);
     inputPizza.calculatePrice();
     displayPizzaPrice(inputPizza);
-    console.log(pizzaSize);
-    console.log(pizzaToppings);
     console.log(inputPizza);
   });
 });

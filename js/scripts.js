@@ -150,22 +150,26 @@ function displayPizzaPrice(pizza){
   pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.premiumToppings));
   const numberOfToppings = pizzaToppings.length;
 
-  let htmlString = `<p class="pizza-size">${pizzaSize} Pizza</p><p class="pizza-toppings">`;
-  pizzaToppings.forEach(function(element, index){
-    htmlString += element;
-    if(index === numberOfToppings-1){
-      htmlString += "</p>";
-    } else {
-      htmlString += ", ";
-    }
-  });
-  htmlString += `<p class="pizza-price float-right">$${pizzaPrice.toFixed(2)}</p>`;
-
-  $("#priceDisplay").html(htmlString);
+  let htmlString = `<div id=${pizza.id}><p class="pizza-size">${pizzaSize} Cheese Pizza`;
+  if(numberOfToppings > 0){
+    htmlString += "<br>"
+    pizzaToppings.forEach(function(element, index){
+      htmlString += element;
+      if(index === numberOfToppings-1){
+        htmlString += "<br>";
+      } else {
+        htmlString += ", ";
+      }
+    });
+  }
+  htmlString += `</p><p class="pizza-price text-right">$${pizzaPrice.toFixed(2)}`;
+  htmlString += `<br><u class="remove-pizza">Remove<u></p></div>`;
+  $("#priceDisplay").append(htmlString);
 }
 
 $(document).ready(function(){
   populateToppings();
+  const pizzaOrder = new Order();
   $("#pizzaForm").submit(function(event){
     event.preventDefault();
     const pizzaSize = $("#pizzaSize").val();
@@ -176,11 +180,12 @@ $(document).ready(function(){
       const pizzaToppings = getPizzaToppingsSelected();
       const inputPizza = new Pizza(pizzaToppings, pizzaSize);
       inputPizza.calculatePrice();
+      pizzaOrder.addPizza(inputPizza);
       displayPizzaPrice(inputPizza);
       console.log(inputPizza);
     } else {
       alert("Select size of pizza");
     }
-    
   });
+  
 });

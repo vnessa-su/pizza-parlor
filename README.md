@@ -59,47 +59,223 @@ Copyright (c) 2021 Vanessa Su
 
 ### **Test:** It will create a Pizza object with input toppings and size properties.
 ### **Code:** 
-    let toppings = ["cheese", "pepperoni", "green peppers"];
-    let size = "large";
+    let toppings = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+        premiumToppings: ["Pineapple"]
+    };
+    let size = "Large";
     const customerPizza = new Pizza(toppings, size);
     customerPizza;
 ### **Expected Output:** 
     Pizza {
-        toppings: ["cheese", "pepperoni", "green peppers"],
-        size: "large"
+        toppings: {
+            noCost: ["Extra Sauce"],
+            basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+            premiumToppings: ["Pineapple"]
+        },
+        size: "Large"
     }
 &nbsp;
 
 ***
-### **Describe:** Pizza.prototype.calculatePrice
+### **Describe:** Pizza.prototype.calculatePrice()
 ***
 
 ### **Test:** It will calculate and add a price property to the Pizza object with only the base price of the pizza if no toppings are selected.
 ### **Code:** 
-    let toppings = [];
-    let size = "small";
+    let toppings = {
+        noCost: [],
+        basicToppings: [],
+        premiumToppings: []
+    };
+    let size = "Small";
     const customerPizza = new Pizza(toppings, size);
     customerPizza.calculatePrice();
     customerPizza;
 ### **Expected Output:** 
     Pizza {
-        toppings: [],
-        size: "small",
+        toppings: {
+            noCost: [],
+            basicToppings: [],
+            premiumToppings: []
+        },
+        size: "Small",
         price: 5.00
     }
 &nbsp;
 
-### **Test:** It will calculate the price of the pizza based on the base price plus 0.25 per topping, and add a price property to the Pizza object.
+### **Test:** It will calculate the price of the pizza based on the base price plus 0.25 per basic topping, 1.00 per premium topping, and add a price property to the Pizza object.
 ### **Code:** 
-    let toppings = ["cheese", "pepperoni", "green peppers"];
-    let size = "medium";
+    let toppings = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+        premiumToppings: ["Pineapple"]
+    };
+    let size = "Medium";
     const customerPizza = new Pizza(toppings, size);
     customerPizza.calculatePrice();
     customerPizza;
 ### **Expected Output:** 
     Pizza {
-        toppings: ["cheese", "pepperoni", "green peppers"],
-        size: "medium",
-        price: 8.75
+        toppings: {
+            noCost: ["Extra Sauce"],
+            basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+            premiumToppings: ["Pineapple"]
+        },
+        size: "Medium",
+        price: 9.75
+    }
+&nbsp;
+
+***
+### **Describe:** Order()
+***
+
+### **Test:** It will create an Order object with an empty pizzas property, a totalPrice property of 0, and currentId property of 0.
+### **Code:** 
+    const customerOrder = new Order();
+    customerOrder;
+### **Expected Output:** 
+    Order {
+        pizzas: {},
+        totalPrice: 0,
+        currentId: 0
+    }
+&nbsp;
+
+***
+### **Describe:** Order.prototype.addPizza()
+***
+
+### **Test:** It will update the Pizza object with an id, add it to the pizzas property and update the total property of the Order object.
+### **Code:** 
+    const customerOrder = new Order();
+    let toppingsOne = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+        premiumToppings: ["Pineapple"]
+    };
+    let sizeOne = "Medium";
+    const customerPizzaOne = new Pizza(toppingsOne, sizeOne);
+    customerPizzaOne.calculatePrice();
+    let toppingsTwo = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni"],
+        premiumToppings: []
+    };
+    let sizeTwo = "Small";
+    const customerPizzaTwo = new Pizza(toppingsTwo, sizeTwo);
+    customerPizzaTwo.calculatePrice();
+    customerOrder.addPizza(customerPizzaOne);
+    customerOrder.addPizza(cusomterPizzaTwo);
+    customerOrder;
+### **Expected Output:** 
+    Order {
+        pizzas: {
+            '1':
+                Pizza {
+                    toppings: {
+                        noCost: ["Extra Sauce"],
+                        basicToppings: ["Cheese", "Pepperoni", "Green Peppers"],
+                        premiumToppings: ["Pineapple"]
+                    },
+                    size: "Medium",
+                    price: 9.75
+                },
+            '2':
+                Pizza {
+                    toppings: {
+                        noCost: ["Extra Sauce"],
+                        basicToppings: ["Extra Cheese", "Pepperoni"],
+                        premiumToppings: []
+                    },
+                    size: "Small",
+                    price: 5.50
+                }
+        },
+        totalPrice: 15.25,
+        currentId: 2
+    }
+&nbsp;
+
+***
+### **Describe:** Order.prototype.removePizza()
+***
+
+### **Test:** It will remove the Pizza object by id and update the total property of the Order object.
+### **Code:** 
+    const customerOrder = new Order();
+    let toppingsOne = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+        premiumToppings: ["Pineapple"]
+    };
+    let sizeOne = "Medium";
+    const customerPizzaOne = new Pizza(toppingsOne, sizeOne);
+    customerPizzaOne.calculatePrice();
+    let toppingsTwo = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni"],
+        premiumToppings: []
+    };
+    let sizeTwo = "Small";
+    const customerPizzaTwo = new Pizza(toppingsTwo, sizeTwo);
+    customerPizzaTwo.calculatePrice();
+    customerOrder.addPizza(customerPizzaOne);
+    customerOrder.addPizza(customerPizzaTwo);
+    customerOrder.removePizza(customerPizzaOne.id);
+    customerOrder;
+### **Expected Output:** 
+    Order {
+        pizzas: {
+            '2':
+                Pizza {
+                    toppings: {
+                        noCost: ["Extra Sauce"],
+                        basicToppings: ["Extra Cheese", "Pepperoni"],
+                        premiumToppings: []
+                    },
+                    size: "Small",
+                    price: 5.50
+                }
+        },
+        totalPrice: 5.50,
+        currentId: 2
+    }
+&nbsp;
+
+***
+### **Describe:** Order.prototype.resetOrder()
+***
+
+### **Test:** It will set the Order object's pizzas property to empty, totalPrice to 0 and currentId to 0.
+### **Code:** 
+    const customerOrder = new Order();
+    let toppingsOne = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+        premiumToppings: ["Pineapple"]
+    };
+    let sizeOne = "Medium";
+    const customerPizzaOne = new Pizza(toppingsOne, sizeOne);
+    customerPizzaOne.calculatePrice();
+    let toppingsTwo = {
+        noCost: ["Extra Sauce"],
+        basicToppings: ["Extra Cheese", "Pepperoni"],
+        premiumToppings: []
+    };
+    let sizeTwo = "Small";
+    const customerPizzaTwo = new Pizza(toppingsTwo, sizeTwo);
+    customerPizzaTwo.calculatePrice();
+    customerOrder.addPizza(customerPizzaOne);
+    customerOrder.addPizza(customerPizzaTwo);
+    customerOrder.resetOrder();
+    customerOrder;
+### **Expected Output:** 
+    Order {
+        pizzas: {},
+        totalPrice: 0,
+        currentId: 0
     }
 &nbsp;

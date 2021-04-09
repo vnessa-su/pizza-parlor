@@ -69,3 +69,37 @@ Copyright (c) 2021 Vanessa Su
         size: "large"
     }
 &nbsp;
+
+***
+### **Describe:** Pizza.prototype.calculatePrice
+***
+
+### **Test:** It will calculate and add a price property to the Pizza object with only the base price of the pizza if no toppings are selected.
+### **Code:** 
+    let toppings = [];
+    let size = "small";
+    const customerPizza = new Pizza(toppings, size);
+    customerPizza.calculatePrice();
+    customerPizza;
+### **Expected Output:** 
+    Pizza {
+        toppings: [],
+        size: "small",
+        price: 5.00
+    }
+&nbsp;
+
+### **Test:** It will calculate the price of the pizza based on the base price plus 0.25 per topping, and add a price property to the Pizza object.
+### **Code:** 
+    let toppings = ["cheese", "pepperoni", "green peppers"];
+    let size = "medium";
+    const customerPizza = new Pizza(toppings, size);
+    customerPizza.calculatePrice();
+    customerPizza;
+### **Expected Output:** 
+    Pizza {
+        toppings: ["cheese", "pepperoni", "green peppers"],
+        size: "medium",
+        price: 8.75
+    }
+&nbsp;

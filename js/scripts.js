@@ -42,6 +42,16 @@ Order.prototype.addPizza = function(pizza){
   this.totalPrice += pizza.price;
 }
 
+Order.prototype.removePizza = function(pizzaId){
+  const pizzaToRemove = this.pizzas[pizzaId];
+  if (pizzaToRemove === undefined) {
+    return false;
+  }
+  this.totalPrice -= pizzaToRemove.price;
+  delete this.pizzas[pizzaId];
+  return true;
+}
+
 // TEST !!!TO BE REMOVED!!!
 const customerOrder = new Order();
 customerOrder;
@@ -66,6 +76,8 @@ customerPizzaTwo;
 customerOrder.addPizza(customerPizzaOne);
 customerOrder;
 customerOrder.addPizza(customerPizzaTwo);
+customerOrder;
+customerOrder.removePizza(customerPizzaOne.id);
 customerOrder;
 customerOrder.resetOrder();
 customerOrder;

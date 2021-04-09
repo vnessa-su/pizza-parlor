@@ -1,27 +1,28 @@
 # Pizza Parlor
 
-#### Calculates the cost of a pizza based on toppings and size chosen.
+#### Calculates the cost of a pizza based on toppings and size chosen and adds it to the order.
 
 #### By Vanessa Su
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+Presents the user with a set of checkboxes of different toppings to put on a pizza, as well as a few omission selections, and a dropdown box to select the size of the pizza. Based on the selection, the pizza price will be calculated when the Add to Order button is clicked and displayed in the Order section with an updated total price. Clicking on the Remove text below the pizza price will remove the pizza from the order and the total price is update to reflect that.
 
-#### To see my live website go to {GH_PAGES_LINK_HERE}!
+#### To see my live website go to [https://vnessa-su.github.io/pizza-parlor/](https://vnessa-su.github.io/pizza-parlor/)!
 
 ## User Story
 
 * Select toppings
 * Select a size
-* Press the Submit button to display the price of the pizza
+* Press the Add or Order button to display the price of the pizza in the Order section and Order total
+* Click Remove text on order item to remove it
 
 ## Technologies Used
 
-* _HTML_
-* _CSS_
-* _JavaScript_
-* _VSCode_
+* HTML
+* CSS
+* JavaScript
+* VSCode
 
 ## Setup/Installation Requirements
 
@@ -39,7 +40,7 @@ View/edit webpage locally:
 
 ## Known Bugs
 
-_No known bugs_
+* Selecting No Cheese doesn't keep you from selecting Extra Cheese, and the same goes for the No Sauce and Extra Sauce options
 
 ## Contact Information
 

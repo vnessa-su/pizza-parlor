@@ -172,8 +172,13 @@ function attachPizzaDisplayListener(order, id){
     console.log("remove pizza clicked");
     order.removePizza(id);
     console.log(order);
+    updateOrderTotalDisplay(order);
     $(this).closest(`#${id}`).remove();
   });
+}
+
+function updateOrderTotalDisplay(order){
+  $("#totalDisplay").text(`${order.totalPrice.toFixed(2)}`);
 }
 
 $(document).ready(function(){
@@ -192,6 +197,7 @@ $(document).ready(function(){
       pizzaOrder.addPizza(inputPizza);
       displayPizzaPrice(inputPizza);
       attachPizzaDisplayListener(pizzaOrder, inputPizza.id);
+      updateOrderTotalDisplay(pizzaOrder);
       console.log(inputPizza);
     } else {
       alert("Select size of pizza");

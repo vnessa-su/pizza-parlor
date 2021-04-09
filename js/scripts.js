@@ -35,6 +35,13 @@ function Order(){
   this.currentId = 0;
 }
 
+Order.prototype.addPizza = function(pizza){
+  this.currentId += 1;
+  pizza.id = this.currentId;
+  this.pizzas[pizza.id] = pizza;
+  this.totalPrice += pizza.price;
+}
+
 // TEST !!!TO BE REMOVED!!!
 const customerOrder = new Order();
 customerOrder;

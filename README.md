@@ -1,8 +1,8 @@
-# _{Application Name}_
+# Pizza Parlor
 
-#### _{Brief description of application}, {Date of current version}_
+#### Calculates the cost of a pizza based on toppings and size chosen.
 
-#### By _**{List of contributors}***_
+#### By Vanessa Su
 
 ## Description
 
@@ -12,7 +12,9 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 
 ## User Story
 
-* _As a user I want to be able to..._
+* Select toppings
+* Select a size
+* Press the Submit button to display the price of the pizza
 
 ## Technologies Used
 
@@ -23,21 +25,16 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 
 ## Setup/Installation Requirements
 
-Software Requirements
-1. Internet browser
-2. A code editor like VSCode or Atom to view or edit the codebase.
+Software Requirements:
+* Web browser
+* Code/text editor
 
-Open by downloading:
-1. Download this repository onto your computer by clicking the 'clone or download button'
-2. Open the project folder.
-2. Double click index.html to open it in your web browser
-
-Open via Bash/GitBash:
-1. Clone this repository onto your computer:
-`git clone {PUT_REPO_HERE}`
-2. Navigate into the `{NAME_OF_DIRECTORY}` directory, and open in Visual Studio Code or preferred text editor
-`code .`
-3. Open index.html in Chrome or preferred browser
+View/edit webpage locally:
+1. Download or clone this repository to your computer
+    * To download, click the Code button and select Download ZIP
+    * To clone, use: `git clone https://github.com/vnessa-su/pizza-parlor.git`
+2. Navigate to the `/pizza-parlor` directory
+3. Double click index.html to open it in your web browser or open in your code editor to modify
 
 
 ## Known Bugs
@@ -48,8 +45,10 @@ _No known bugs_
 
 _For any questions or comments, please reach out through GitHub._
 
-### License
+## License
 
 [MIT License](license)
 
-Copyright (c) [year] [names]
+Copyright (c) 2021 Vanessa Su
+
+## Tests

@@ -28,6 +28,41 @@ Pizza.prototype.calculatePrice = function(){
   this.price = price;
 }
 
+// *** Order ****
+function Order(){
+  this.pizzas = {},
+  this.totalPrice = 0;
+  this.currentId = 0;
+}
+
+// TEST !!!TO BE REMOVED!!!
+const customerOrder = new Order();
+customerOrder;
+let toppingsOne = {
+  noCost: ["Extra Sauce"],
+  basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
+  premiumToppings: ["Pineapple"]
+};
+let sizeOne = "Medium";
+const customerPizzaOne = new Pizza(toppingsOne, sizeOne);
+customerPizzaOne.calculatePrice();
+customerPizzaOne;
+let toppingsTwo = {
+  noCost: ["Extra Sauce"],
+  basicToppings: ["Extra Cheese", "Pepperoni"],
+  premiumToppings: []
+};
+let sizeTwo = "Small";
+const customerPizzaTwo = new Pizza(toppingsTwo, sizeTwo);
+customerPizzaTwo.calculatePrice();
+customerPizzaTwo;
+customerOrder.addPizza(customerPizzaOne);
+customerOrder;
+customerOrder.addPizza(customerPizzaTwo);
+customerOrder;
+customerOrder.resetOrder();
+customerOrder;
+
 // ---------- User Interface Logic ----------
 function populateToppings(){
   const noCostSelection = ["No Cheese", "No Sauce", "Extra Sauce"];

@@ -11,9 +11,36 @@
   <script src="js/jquery-3.6.0.js"></script>
   <script src="js/scripts.js"></script>
   
-  <title>Document</title>
+  <title>Pizza Parlor</title>
 </head>
 <body>
-  
+  <form class="form" id="toppingsCheckboxForm">
+    <h5>Toppings:</h5>
+    <div class="form-check form-check-inline">
+      <input type="checkbox" id="cheese-topping" class="form-check-input" value="cheese">
+      <label for="cheese-topping" class="form-check-label">Cheese</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="checkbox" id="pepperoni-topping" class="form-check-input" value="cheese">
+      <label for="pepperoni-topping" class="form-check-label">Pepperoni</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="checkbox" id="green-peppers-topping" class="form-check-input" value="cheese">
+      <label for="green-peppers-topping" class="form-check-label">Green Peppers</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="checkbox" id="mushrooms-topping" class="form-check-input" value="cheese">
+      <label for="mushrooms-topping" class="form-check-label">Mushrooms</label>
+    </div>
+  </form>
+  <form class="form" id="pizzaSizeSelectForm">
+    <h5>Size:</h5>
+    <select class="form-control">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+  </form>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </body>
 </html>

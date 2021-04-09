@@ -109,6 +109,7 @@ $(document).ready(function(){
   $("#pizzaForm").submit(function(event){
     event.preventDefault();
     const pizzaSize = $("#pizzaSize").val();
+    $("#pizzaSize").val("").change();
     const pizzaToppings = getPizzaToppingsSelected();
     const inputPizza = new Pizza(pizzaToppings, pizzaSize);
     inputPizza.calculatePrice();

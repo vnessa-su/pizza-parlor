@@ -52,3 +52,20 @@ _For any questions or comments, please reach out through GitHub._
 Copyright (c) 2021 Vanessa Su
 
 ## Tests
+
+***
+### **Describe:** Pizza()
+***
+
+### **Test:** It will create a Pizza object with input toppings and size properties.
+### **Code:** 
+    let toppings = ["cheese", "pepperoni", "green peppers"];
+    let size = "large";
+    const customerPizza = new Pizza(toppings, size);
+    customerPizza;
+### **Expected Output:** 
+    Pizza {
+        toppings: ["cheese", "pepperoni", "green peppers"],
+        size: "large"
+    }
+&nbsp;

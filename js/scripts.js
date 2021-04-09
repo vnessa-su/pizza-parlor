@@ -150,7 +150,7 @@ function displayPizzaPrice(pizza){
   pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.premiumToppings));
   const numberOfToppings = pizzaToppings.length;
 
-  let htmlString = `<div id=${pizza.id}><p class="pizza-size">${pizzaSize} Cheese Pizza`;
+  let htmlString = `<div class="pizza-display" id=${pizza.id}><p class="pizza-size">${pizzaSize} Cheese Pizza`;
   if(numberOfToppings > 0){
     htmlString += "<br>"
     pizzaToppings.forEach(function(element, index){
@@ -163,8 +163,17 @@ function displayPizzaPrice(pizza){
     });
   }
   htmlString += `</p><p class="pizza-price text-right">$${pizzaPrice.toFixed(2)}`;
-  htmlString += `<br><u class="remove-pizza">Remove<u></p></div>`;
+  htmlString += `<br><u class="remove-pizza">Remove</u></p></div>`;
   $("#priceDisplay").append(htmlString);
+}
+
+function attachPizzaDisplayListener(order, id){
+  $(`div#${id}`).on("click", "u.remove-pizza", function(){
+    console.log("remove pizza clicked");
+    order.removePizza(id);
+    console.log(order);
+    $(this).closest(`#${id}`).remove();
+  });
 }
 
 $(document).ready(function(){
@@ -182,10 +191,13 @@ $(document).ready(function(){
       inputPizza.calculatePrice();
       pizzaOrder.addPizza(inputPizza);
       displayPizzaPrice(inputPizza);
+      attachPizzaDisplayListener(pizzaOrder, inputPizza.id);
       console.log(inputPizza);
     } else {
       alert("Select size of pizza");
     }
   });
-  
+  $(".remove-pizza").click(function(){
+    console.log("remove pizza clicked");
+  })
 });

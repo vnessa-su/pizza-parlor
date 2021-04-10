@@ -67,25 +67,25 @@ function populateToppings(){
     const htmlString = 
       `<div class="form-check form-check-inline">\
         <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-input no-cost-topping" value="${element}">\
-        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label no-cost-topping">${element}</label>\
+        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label no-cost-topping  toppings-label">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });
-  $("#toppingsCheckbox").append("<h6>(+$0.25):</h6>");
+  $("#toppingsCheckbox").append('<h6 class="order-section-header">(+$0.25):</h6>');
   basicToppings.forEach(function(element){
     const htmlString = 
       `<div class="form-check form-check-inline">\
         <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-input basic-topping" value="${element}">\
-        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label basic-topping">${element}</label>\
+        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label basic-topping toppings-label">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });
-  $("#toppingsCheckbox").append("<h6>(+$1.00):</h6>");
+  $("#toppingsCheckbox").append('<h6 class="order-section-header">(+$1.00):</h6>');
   premiumToppings.forEach(function(element){
     const htmlString = 
       `<div class="form-check form-check-inline">\
         <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-input premium-topping" value="${element}">\
-        <label for="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-label premium-topping">${element}</label>\
+        <label for="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-label premium-topping toppings-label">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });

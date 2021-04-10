@@ -7,20 +7,24 @@
 
   <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
   <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&family=Roboto+Slab&display=swap" rel="stylesheet">
 
   <script src="js/jquery-3.6.0.js"></script>
   <script src="js/scripts.js"></script>
   
   <title>Pizza Parlor</title>
+  <link rel="icon" href="img/favicon.ico">
 </head>
-<body>
-  <div class="container p-5">
+<body class="page-background">
+  <h1 class="text-center page-header p-4">Welcome to the Pizza Parlor!</h1>
+  <div class="container p-2">
     <div class="row">
-      <div class="col-8 border m-0">
+      <div class="col-8 border order-form rounded">
         <form class="form" id="pizzaForm">
-          <h5>Toppings:</h5>
+          <h5 class="order-section-header">Toppings:</h5>
           <div id="toppingsCheckbox"></div>
-          <h5>Size:</h5>
+          <h5 class="order-section-header">Size:</h5>
           <div id="sizeSelect">
             <select class="form-control" id="pizzaSize">
               <option value="" selected disabled>Select Size</option>
@@ -29,16 +33,16 @@
               <option value="Large">Large</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Add to Order</button>
+          <button type="submit" class="btn btn-primary my-4">Add to Order</button>
         </form>
       </div>
-      <div class="col border">
-        <h5>Order:</h5>
+      <div class="col border order-form rounded">
+        <h5 class="order-section-header">Order:</h5>
         <hr>
         <div id="priceDisplay"></div>
         <hr>
         <h6 class="text-right"><strong>Total:</strong> $<span id="totalDisplay">0.00</span></h6>
-        <button class="btn btn-secondary" id="resetOrderButton" type="button">Reset Order</button>
+        <button class="btn btn-secondary my-4" id="resetOrderButton" type="button">Reset Order</button>
       </div>
     </div>
   </div>

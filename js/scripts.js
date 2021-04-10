@@ -1,5 +1,5 @@
 // ---------- Business Logic ----------
-// *** Pizza ****
+// ********** Pizza Object **********
 function Pizza(toppingsSelected, sizeSelected){
   this.toppings = toppingsSelected;
   this.size = sizeSelected;
@@ -28,7 +28,7 @@ Pizza.prototype.calculatePrice = function(){
   this.price = price;
 }
 
-// *** Order ****
+// ********** Order Object **********
 function Order(){
   this.pizzas = {},
   this.totalPrice = 0;
@@ -57,36 +57,6 @@ Order.prototype.resetOrder = function(){
   this.totalPrice = 0;
   this.currentId = 0;
 }
-
-// TEST !!!TO BE REMOVED!!!
-const customerOrder = new Order();
-customerOrder;
-let toppingsOne = {
-  noCost: ["Extra Sauce"],
-  basicToppings: ["Extra Cheese", "Pepperoni", "Green Peppers"],
-  premiumToppings: ["Pineapple"]
-};
-let sizeOne = "Medium";
-const customerPizzaOne = new Pizza(toppingsOne, sizeOne);
-customerPizzaOne.calculatePrice();
-customerPizzaOne;
-let toppingsTwo = {
-  noCost: ["Extra Sauce"],
-  basicToppings: ["Extra Cheese", "Pepperoni"],
-  premiumToppings: []
-};
-let sizeTwo = "Small";
-const customerPizzaTwo = new Pizza(toppingsTwo, sizeTwo);
-customerPizzaTwo.calculatePrice();
-customerPizzaTwo;
-customerOrder.addPizza(customerPizzaOne);
-customerOrder;
-customerOrder.addPizza(customerPizzaTwo);
-customerOrder;
-customerOrder.removePizza(customerPizzaOne.id);
-customerOrder;
-customerOrder.resetOrder();
-customerOrder;
 
 // ---------- User Interface Logic ----------
 function populateToppings(){
@@ -169,9 +139,7 @@ function displayPizzaPrice(pizza){
 
 function attachPizzaDisplayListener(order, id){
   $(`div#${id}`).on("click", "u.remove-pizza", function(){
-    console.log("remove pizza clicked");
     order.removePizza(id);
-    console.log(order);
     updateOrderTotalDisplay(order);
     $(this).closest(`#${id}`).remove();
   });
@@ -188,8 +156,6 @@ $(document).ready(function(){
     event.preventDefault();
     const pizzaSize = $("#pizzaSize").val();
     $("#pizzaSize").val("").change();
-    console.log(pizzaSize)
-    
     if(pizzaSize){
       const pizzaToppings = getPizzaToppingsSelected();
       const inputPizza = new Pizza(pizzaToppings, pizzaSize);
@@ -198,12 +164,8 @@ $(document).ready(function(){
       displayPizzaPrice(inputPizza);
       attachPizzaDisplayListener(pizzaOrder, inputPizza.id);
       updateOrderTotalDisplay(pizzaOrder);
-      console.log(inputPizza);
     } else {
       alert("Select size of pizza");
     }
   });
-  $(".remove-pizza").click(function(){
-    console.log("remove pizza clicked");
-  })
 });

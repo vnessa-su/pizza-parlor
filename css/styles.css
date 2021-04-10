@@ -2,3 +2,7 @@
   text-shadow: 1px 1px blue;
   color: blue;
 }
+
+#pizzaSize {
+  max-width: 400px;
+}

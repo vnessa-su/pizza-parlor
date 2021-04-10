@@ -168,4 +168,9 @@ $(document).ready(function(){
       alert("Select size of pizza");
     }
   });
+  $("#resetOrderButton").click(function(){
+    pizzaOrder.resetOrder();
+    updateOrderTotalDisplay(pizzaOrder);
+    $(".pizza-display").remove();
+  })
 });

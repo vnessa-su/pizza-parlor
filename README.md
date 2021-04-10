@@ -16,6 +16,7 @@ Presents the user with a set of checkboxes of different toppings to put on a piz
 * Select a size
 * Press the Add or Order button to display the price of the pizza in the Order section and Order total
 * Click Remove text on order item to remove it
+* Click Reset Order button to remove all pizzas from the order
 
 ## Technologies Used
 

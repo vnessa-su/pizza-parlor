@@ -61,13 +61,13 @@ Order.prototype.resetOrder = function(){
 // ---------- User Interface Logic ----------
 function populateToppings(){
   const noCostSelection = ["No Cheese", "No Sauce", "Extra Sauce"];
-  const basicToppings = ["Extra Cheese", "Pepperoni", "Green Peppers", "Mushroooms"];
-  const premiumToppings = ["Grilled Chicken", "Artichokes", "Anchovies", "Pineapple"];
+  const basicToppings = ["Extra Cheese", "Pepperoni", "Green Peppers", "Mushroooms", "Garlic", "Onions", "Jalapenos"];
+  const premiumToppings = ["Grilled Chicken", "Artichokes", "Anchovies", "Pineapple", "Steak"];
   noCostSelection.forEach(function(element){
     const htmlString = 
       `<div class="form-check form-check-inline">\
         <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-input no-cost-topping" value="${element}">\
-        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label no-cost-topping  toppings-label">${element}</label>\
+        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label no-cost-topping  selection-label">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });
@@ -76,7 +76,7 @@ function populateToppings(){
     const htmlString = 
       `<div class="form-check form-check-inline">\
         <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-input basic-topping" value="${element}">\
-        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label basic-topping toppings-label">${element}</label>\
+        <label for="${element.toLowerCase().replace(/ /g, '-')}-topping" class="form-check-label basic-topping selection-label">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });
@@ -85,7 +85,7 @@ function populateToppings(){
     const htmlString = 
       `<div class="form-check form-check-inline">\
         <input type="checkbox" id="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-input premium-topping" value="${element}">\
-        <label for="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-label premium-topping toppings-label">${element}</label>\
+        <label for="${element.toLowerCase().replace(/ /g, '')}-topping" class="form-check-label premium-topping selection-label">${element}</label>\
       </div>`;
     $("#toppingsCheckbox").append(htmlString);
   });
@@ -120,7 +120,7 @@ function displayPizzaPrice(pizza){
   pizzaToppings = pizzaToppings.concat(Object.values(pizza.toppings.premiumToppings));
   const numberOfToppings = pizzaToppings.length;
 
-  let htmlString = `<div class="pizza-display" id=${pizza.id}><p class="pizza-size">${pizzaSize} Cheese Pizza`;
+  let htmlString = `<div class="pizza-display" id=${pizza.id}><p><span class="pizza-size-display">${pizzaSize} Cheese Pizza</span><span class="selected-toppings-display">`;
   if(numberOfToppings > 0){
     htmlString += "<br>"
     pizzaToppings.forEach(function(element, index){
@@ -132,7 +132,7 @@ function displayPizzaPrice(pizza){
       }
     });
   }
-  htmlString += `</p><p class="pizza-price text-right">$${pizzaPrice.toFixed(2)}`;
+  htmlString += `</span></p><p class="pizza-price text-right">$${pizzaPrice.toFixed(2)}`;
   htmlString += `<br><u class="remove-pizza">Remove</u></p></div>`;
   $("#priceDisplay").append(htmlString);
 }

@@ -19,14 +19,14 @@
 <body class="page-background">
   <h1 class="text-center page-header p-4">Welcome to the Pizza Parlor!</h1>
   <div class="container p-2">
-    <div class="row">
-      <div class="col-8 border order-form rounded">
+    <div class="row order-container">
+      <div class="col-md-8 border order-form rounded">
         <form class="form" id="pizzaForm">
           <h5 class="order-section-header">Toppings:</h5>
           <div id="toppingsCheckbox" class="ml-3"></div>
           <h5 class="order-section-header">Size:</h5>
           <div id="sizeSelect">
-            <select class="form-control" id="pizzaSize">
+            <select class="form-control selection-label" id="pizzaSize">
               <option value="" selected disabled>Select Size</option>
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
@@ -36,12 +36,12 @@
           <button type="submit" class="btn btn-primary my-4">Add to Order</button>
         </form>
       </div>
-      <div class="col border order-form rounded">
+      <div class="col-sm border order-form rounded">
         <h5 class="order-section-header">Order:</h5>
         <hr>
         <div id="priceDisplay"></div>
         <hr>
-        <h6 class="text-right"><strong>Total:</strong> $<span id="totalDisplay">0.00</span></h6>
+        <h6 class="text-right"><strong class="order-section-header">Total:</strong> $<span class="pizza-price" id="totalDisplay">0.00</span></h6>
         <button class="btn btn-secondary my-4" id="resetOrderButton" type="button">Reset Order</button>
       </div>
     </div>

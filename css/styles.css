@@ -6,6 +6,7 @@
 .page-header {
   color: azure;
   font-family: 'Kiwi Maru', serif;
+  margin-bottom: 0;
 }
 
 .order-section-header {
@@ -16,14 +17,43 @@
 .order-form {
   background-color: rgba(255, 255, 255, 0.8);
   margin-left: 10px;
+  margin-top: 10px;
   padding: 30px;
 }
 
-.remove-pizza:hover {
-  text-shadow: 1px 1px blue;
-  color: blue;
+.selection-label {
+  font-family: 'Kiwi Maru', serif;
 }
 
 #pizzaSize {
   max-width: 400px;
+}
+
+.remove-pizza:hover {
+  text-shadow: 1px 1px grey;
+}
+
+.pizza-size-display {
+  font-family: 'Kiwi Maru', serif;
+}
+
+.selected-toppings-display{
+  font-family: 'Kiwi Maru', serif;
+  font-size: smaller;
+}
+
+#priceDisplay {
+  height: 200px;
+  overflow-y: auto;
+}
+
+.pizza-price {
+  font-family: 'Roboto', sans-serif;
+  font-weight: lightest;
+  margin-right: 10px;
+}
+
+.remove-pizza {
+  font-family: 'Kiwi Maru', serif;
+  font-size: smaller;
 }

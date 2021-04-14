@@ -3,6 +3,7 @@
 function Pizza(toppingsSelected, sizeSelected){
   this.toppings = toppingsSelected;
   this.size = sizeSelected;
+  this.price = 0;
 }
 
 Pizza.prototype.calculatePrice = function(){
@@ -30,7 +31,7 @@ Pizza.prototype.calculatePrice = function(){
 
 // ********** Order Object **********
 function Order(){
-  this.pizzas = {},
+  this.pizzas = {};
   this.totalPrice = 0;
   this.currentId = 0;
 }
